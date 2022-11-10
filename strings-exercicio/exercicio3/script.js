@@ -18,10 +18,10 @@ c) Verifique se a nova string inclui **verde**, e se inclui **laranja**.
 **EXTRA:** tente fazer o “mas não deixe o gato sair” ficar em maiúsculo, assim como o “BOAS VINDAS”
 */
 const frase='Jorge tem uma casa verde e com portão azul, com os dizeres: "BOAS VINDAS, mas não deixe o gato sair"'
-const novaFrase = frase.replace("verde","rosa").replace("azul","laranja")
-const extra="mas não deixe o gato sair"
+let novaFrase = frase.replace("verde","rosa").replace("azul","laranja")
 console.log(frase)
 console.log(novaFrase)
 console.log("a frase nova tem verde ?",novaFrase.includes("verde"))
 console.log("a frase nova tem Laranja ?",novaFrase.includes("laranja"))
-console.log(novaFrase.replace(extra,extra.toUpperCase()))
+const fraseAlterar="mas não deixe o gato sair"
+console.log(novaFrase=novaFrase.replace(fraseAlterar,fraseAlterar.toUpperCase()))
