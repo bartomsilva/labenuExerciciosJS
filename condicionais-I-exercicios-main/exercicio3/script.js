@@ -23,3 +23,4 @@ const checkNacionalidade = (nacioNalidade) => {
 }
 
 checkNacionalidade(nacionalidade)
+
