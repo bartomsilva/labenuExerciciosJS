@@ -1,5 +1,5 @@
 // let nacionalidade //= adicione o prompt aqui
-const nacionalidade = prompt("Escreva aqui sua nacionalidade")
+//const nacionalidade = prompt("Escreva aqui sua nacionalidade")
 
 
 const checkNacionalidade = (nacioNalidade) => {
@@ -22,5 +22,14 @@ const checkNacionalidade = (nacioNalidade) => {
     } 
 }
 
-checkNacionalidade(nacionalidade)
+//checkNacionalidade(nacionalidade)
 
+const checkNacionalidade2=(nacionaLidade)=>{
+    const nValidas="brasileira.argentina.uruguaia.chilena.colombiana"
+    if (nValidas.includes(nacionaLidade.toLowerCase())){
+        console.log("nacionalidade,",nacionaLidade," ok")
+    } else {
+        console.log("nacionalidade",nacionaLidade,"não permitida")
+    }
+}
+checkNacionalidade2("mexixana")
