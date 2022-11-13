@@ -16,6 +16,7 @@ a {
 .flexivel{
     display: flex;
 }
+
 .minhaGranja{
     margin: 0 auto;
     margin-top: 20px;
@@ -23,17 +24,20 @@ a {
     height: 510px;
     border: 1px solid black;       
 }
+
 .resumo{
     margin: 0 auto;
     max-width: 800px;
     border: 1px solid black;    
     text-align: center;
 }
-.granja{
+
+.producao{
     margin: 5px;
     padding: 5px;
     width: 48%;
 }
+
 .galinhas{
     display: flex;
     flex-wrap: wrap;
@@ -48,14 +52,22 @@ a {
 }
 
 .caixaDeOvos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     background: rgba(170, 170, 170, 0.911);   
-    overflow: scroll;
-    /* justify-content: space-between; */
+    overflow:scroll; 
+}
+.caixaDeOvos div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
 }
 .caixaDeOvos img {
-    height: 38 px;
-    margin: 5 px;
-    padding: 5 px;
+    height: 90%
+    
 }
 
 
