@@ -1,59 +1,71 @@
-
 /*
-
 # Exercício 2
 
-Crie um programa que peça um input de número para o usuário. 
-Com este número, o código deve imprimir a **tabuada** do número, de 1 a 10.
+Crie um programa que peça um 
+input de número para o usuário.
+Com este número, 
+o código deve imprimir a **tabuada** do número, de 1 a 10.
+
+Exemplo com entrada **`7`**:
+```jsx
+7
+14
+21
+28
+35
+42
+49
+56
+63
+70
+```
 */
 
-// rotina em loop para interagir com o usuário
-// embora o exercício não pede é bom ir agregando
-// os conhecimentos passados ao novos exercício
-// não utilizei nada que não foi dado ainda.
+// não pede para utilizar loop
 
-// utilizei aqui o loop while 
-let numero = null    // variável que vai receber o número da tabuada ou 0
-                     // para interromper o loop while
-while (numero!=0) {
-
-    numero=Number(prompt(`T a b u a d a: 
-                 Selecione um número entre 1 e 10
-                 para sair, click em Ok sem digitar nada
-                 ou simplesmente click em Cancelar!`))
-
-    // chama a função de validação (a função está no final do código)
-    // range válido 0 a 10 ( zero é a condição de saída )
-    if (!numValido(numero)){    
-        console.log("você não digitou um número válido")
+while(true){  // loop infinito sai apenas com breeak
     
-    // teste da condição de saída do loop    
-    } else if (numero ===0 ){  
-        console.log("até logo!!!")
-        
-    // chama a função que vai imprimir a tabuada 
+    // o enunciado não impõe limite, mas eu fixei um limite,
+    // aceito de ( - 100 a + 100 com excessão do zero )
+    const number=Number(prompt(`Digite um número entre -100 e 100 para imprimir a tabuada:
+     pra finalizar digite 0 ou clique em Cancelar.`,0)) // no prompt adicionei um valor padrão 0
+
+    // se clicar em cancelar o digitar 0 finaliza o programa
+    if (typeof number =="object" || number==0 ) { break } // sai do while
+    
+    if (number >= -100 && number <= 100) {
+        // chama a função que faz a impressão da tabuada
+        imprimeTabuada(number)
     } else {
-        imprimeTabuada(numero) 
+        console.log("digite um número válido")
     }
+
+}
+console.log("até a próxima...")
+
+// executa a impressão da tabuada
+// precisa ser uma função? NÃO!!
+function imprimeTabuada(number){
+
+    const numbers=[1,2,3,4,5,6,7,8,9,10] // precisa usar array? não
+                                         // escolhi usar array porque vou usar o ( for of )  
+    // cabeçalho                                            
+    console.log(`\nTabuda do Número ( ${number} )`)
+
+    // loop para ir pegando os valores do array e multiplicar pelo número escolhido
+    for (let mult of  numbers ) {
+        console.log(`  ${number} x ${mult} = ${number * mult}`)    
+    }
+    console.log("------------------------")
 }
 
-// função que executa a impressão da tabuada
-// recebe por parâmetro ( numero ) que corresponde
-// a qual tabuada deverá ser impressa
-function imprimeTabuada(numero){
-    const numeros = [1,2,3,4,5,6,7,8,9]     // contém os números para multiplicar
-    console.log("Tabuada do",numero),"\n"   // título da tabuada
-    for (let num of numeros ){              // loop for of 
-        console.log(`  ${numero} x ${num} = ${numero * num} ` )
-    }
-}
 
-//função que valida o range de 0 a 10
-// 0 é a condição de saída do loop
-// de 1 até 10 são as tabuadas válidas
-function numValido(num){
-    if (num >= 0 && num <= 10 ) {
-        return true // valida o número 
-    }
-    return false    // invalida o número
+
+const number=Number(prompt("Digite um número para imprimir a tabuada:"))
+
+// cabeçalho                                            
+console.log(`\nTabuda do Número ( ${number} )`)
+
+for ( let num = 1 ; num <= 10 ; num++ ){
+    console.log(`  ${number} x ${mult} = ${number * num}`)    
 }
