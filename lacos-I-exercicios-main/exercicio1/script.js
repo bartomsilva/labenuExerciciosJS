@@ -13,14 +13,14 @@ Toda vez que a resposta for
  devemos imprimir o valor total da conta.
 */
 
-let coxinhas=0 // acumula o total de coxinhas ( adicionado)
-let continuar=null
-let conta=0
+let coxinhas=0 // acumula o total de coxinhas ( QUANTIDADE )
+let continuar=null // S ou N
+let conta=0  // total da conta em dinheiro
 
 while(true) {  // macete antigo ( loop infinito )
     
     continuar=prompt(`Deseja comer mais coxinhas?
-    digite sim ou não`)
+    digite S = sim ou N = não`)
     
     
     if (typeof continuar == "object") { break } // clicou em cancelar o retorno é null
@@ -32,9 +32,9 @@ while(true) {  // macete antigo ( loop infinito )
                                        // dar erro de excução, porque ao clicar cancelar
                                        // é devolvido null e null não é string. 
 
-    if (continuar =="não" ) { break }// digitou não dá break ( funciona em while e switch case )   
+    if (continuar =="n" ) { break }// digitou N=não dá break ( funciona em while e switch case )   
 
-    if (continuar=="sim"){ 
+    if (continuar=="s"){ 
         coxinhas++  // adicionado para somar o número de coxinhas
         console.log(`uma coxinha consumida...(${coxinhas})`) // vai mostrando a quantidade de coxinhas 
         conta += 2.50

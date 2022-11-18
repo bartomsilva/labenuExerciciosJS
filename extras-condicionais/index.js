@@ -1,8 +1,10 @@
 
-desafio1()
-//desafio2()
+//desafio1()
+desafio2()
 
-
+/////////////////////
+// CINEMA          //
+/////////////////////
 function desafio1() {
 
     const generoDoFilme   = prompt("Qual gênero do filme vão assistir?").toLowerCase()
@@ -27,36 +29,38 @@ function desafio1() {
     }
 } 
 
-
+////////////////////////
+// VENDA DE INGRESSOS //
+////////////////////////
 function desafio2(){
-    // guardo a sigla da etapa selecionada para 
-    // pesquisar na tabela
+    // guardo a sigla / indice da etapa selecionada para 
+    // pesquisar na tabela ou acessar o indice diretamente.
     let etapaSelecionada=null
+    let voltarAoInício=false // permite cancelar a venda 
+                             // e voltar para o nome
 
     // considero as categorias 1, 2, 3 e 4 como indice
-    // assim anulo o indice 0
+    // assim anulo o indice 0 sendo null
     const tabelaDePrecos=[
         {
             etapa: "SF",
-            vCat: [0,1320,880,550,220]
-        },       //0  1    2   3   4 
+            vCat: [null,1320,880,550,220]
+        },       //0      1    2   3   4 
         {
             etapa: "DT",
-            vCat: [0,660,440,330,170]
+            vCat: [null,660,440,330,170]
         },
         {
             etapa: "FI",
-            vCat: [0,1980,1320,880,330]
+            vCat: [null,1980,1320,880,330]
         } 
     ] 
-    // a variável sair serve para controlar a saida do while quando 
+    // a saida do while quando é
     // digitar 0 ou clicar em cancelar
-    let sair=1
-    while(sair!=0){ // entra de cara porque sair está valendo 1
-
+    while(true){ // loop infinito até o break
+        
         const nomeDoCliente=prompt("Digite o Nome do Cliente")
-    // NaN
-    // null objetct Number = 0  
+
         if (Number(nomeDoCliente)!=0) {  // se digitar zero o clicar em cancelar não entra aqui       
             // funções para cada ação necessária 
             const tipoDeJogo=selecionarTipoDeJogo()
@@ -67,12 +71,14 @@ function desafio2(){
             // aqui faz a impressão do resultado da compra
             resumo(nomeDoCliente,tipoDeJogo,etapa,categoria,quantidadeDeIngressos)
         } else {
-            sair = 0 // para finaliar o while sair recebe valor 0
+            break// para finaliar o while
         }
     }
 
     // TIPO DE JOGO ( IN indica internacional e DO indica doméstico )
-    function selecionarTipoDeJogo(){
+    function selecionarTipoDeJogo(continua){
+        if (!continua) return
+        
         let tipo=null
         while(true){ // loop infinito macete antigo 1983
             tipo=prompt(`Informe o tipo do jogo:
@@ -95,18 +101,21 @@ function desafio2(){
         let etapa=null
         while(true){ // loop infinito macete antigo 1983
             etapa=prompt(`Digite a Etapa desejada:
-                            SF = semi-final; 
+                            SF = semifinais; 
                             DT = decisão de terceiro lugar 
                             FI = final`).toUpperCase()
 
-            etapaSelecionada = etapa // aqui guardo a sigla para pesquisar na tabela de preços
+            //etapaSelecionada = etapa // aqui guardo a sigla para pesquisar na tabela de preços
 
             switch(etapa){
-                case "SF" :                
-                    return "Semifinal"
+                case "SF" :    
+                    etapaSelecionada = 0           
+                    return "Semifinais"
                 case "DT" :
+                    etapaSelecionada = 1           
                     return "Decisão de Terceiro Lugar"
                 case "FI" :
+                    etapaSelecionada = 2           
                     return "Final"
                 default :
                     console.log("Digite uma Etapa válida!!!")
@@ -158,8 +167,10 @@ function desafio2(){
         console.log("---Valores---")
         
         // pesquisando na tabela de preços o valor do ingresso pela etapa e categoria
-        valorDoIngresso = tabelaDePrecos.find( e => e.etapa === etapaSelecionada) 
-        valorDoIngresso = valorDoIngresso.vCat[categoria] // pegando o valor do ingresso na tabela
+        //valorDoIngresso = tabelaDePrecos.find( e => e.etapa === etapaSelecionada) 
+        //valorDoIngresso = valorDoIngresso.vCat[categoria] // pegando o valor do ingresso na tabela
+        
+        valorDoIngresso = tabelaDePrecos[etapaSelecionada].vCat[categoria] // pegando o valor do ingresso na tabela
 
         // se o jogo for internacional muda o simbolo e multiplica pelo
         // valor do dolar estabelecido no exercício 4.10
