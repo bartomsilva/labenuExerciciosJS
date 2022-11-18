@@ -20,6 +20,6 @@ const melhoresSelecoes = ["Brasileira", "Alemã", "Holandesa", "Argentina", "Por
 
 console.log("---Lista das Melhores Seleções em 2022---\n")
 for ( let count in melhoresSelecoes ) {
-    console.log(`   ${count} - ${melhoresSelecoes[count]}`)
+    console.log(`   ${Number(count)+1} - ${melhoresSelecoes[count]}`)
 }
 
