@@ -14,12 +14,15 @@ Toda vez que a resposta for
 */
 
 let coxinhas=0 // acumula o total de coxinhas ( QUANTIDADE )
-let continuar=null // S ou N
+let continuar="s" // s ou n  = defino incialment com o valor s para entrar no while
 let conta=0  // total da conta em dinheiro
 
-while(true) {  // macete antigo ( loop infinito )
-    
-    continuar=prompt(`Deseja comer mais coxinhas?
+// faça enquanto o valor
+// da variável continuar 
+// não seja igual a n
+while(continuar!="n") {  
+                                    // if ternário: primeira      da segunda coxinha em diante
+    continuar=prompt(`Deseja comer ${coxinhas===0?"uma coxinha ":"mais uma coxinha "}?
     digite S = sim ou N = não`)
     
     
@@ -32,16 +35,15 @@ while(true) {  // macete antigo ( loop infinito )
                                        // dar erro de excução, porque ao clicar cancelar
                                        // é devolvido null e null não é string. 
 
-    if (continuar =="n" ) { break }// digitou N=não dá break ( funciona em while e switch case )   
-
     if (continuar=="s"){ 
         coxinhas++  // adicionado para somar o número de coxinhas
         console.log(`uma coxinha consumida...(${coxinhas})`) // vai mostrando a quantidade de coxinhas 
         conta += 2.50
-    } else {
+    } else if (continuar!="n") {
         console.log("Digite uma opção válida!!!")
     }
 }
+
 console.log("-- Resumo das Vendas---------------")
 console.log(`número de coxinhas consumidas: ${coxinhas}`)    
 console.log(`Valor total da conta R$ ${conta.toFixed(2)}`)
