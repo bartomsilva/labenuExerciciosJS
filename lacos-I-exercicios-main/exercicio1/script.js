@@ -48,8 +48,21 @@ console.log("-- Resumo das Vendas---------------")
 console.log(`número de coxinhas consumidas: ${coxinhas}`)    
 console.log(`Valor total da conta R$ ${conta.toFixed(2)}`)
 
-// variável c/valor inicial   condição p/continuar  incremento do contado
-for ( let contador = 1     ;  contador <= 100      ; contador=1+1 ){
-    console.log("loop eterno")
+
+// então compreendendo isso 
+// sabemos que para um loop ser interrompido ( parar )
+// precisa que uma condição aconteça
+
+// exemplo: um loop que só sairá quando chegar em 100
+
+let x=0
+while(x<100){
+    console.log("x = ",x)
+    x = x + 1  // ou pode fazer x++
 }
 
+// com for
+
+for ( let y = 0 ;  y < 100 ; y = y + 1) {
+    console.log("y = ",y)
+}
