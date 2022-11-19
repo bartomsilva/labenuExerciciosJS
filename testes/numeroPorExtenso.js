@@ -1,7 +1,17 @@
+let numero=0
+while(true){
+    
+    numero=prompt(`Digite um número entre ( 0 e 100 )
+                    para finalizar digite 00`)
+    
+    if(numero=="00") break
 
-function nExtensso(){
+    console.log( `${numero} por extenso é ${nS(numero)}`)
+}
+
+function nExtenso(){
     const numero=Number(document.querySelector("#numero").value)
-    if (!eNumber(numero) || numero < 0 || numero > 100){
+    if (!eNumber(numero) || numero < 0 ){
         document.querySelector("#resposta").innerHTML=`o valor informado = ${numero} não é aceito!`
         return
     }
@@ -27,15 +37,16 @@ function nS(numero){
     const centena=["cento","cem","duzentos","trezentos","quatrocentos","quinhentos",
                    "seiscentos","setecentos","oitocentos","novecentos"]
     
-    const mil=["","mil"] 
-    
+                   
     // para futuro
+    const mil=["","mil"] 
     const milhao=["","milhão","milhões"] // future
     const bilhao=["","bilhão","bilhões"] // future
     const trilaho=["","trilhão","trilhões"] // future
 
     numero = String(numero)
     const tamanho= numero.length
+    // U 1   - D 2  - C 3
     let indice1=0         
     let indice2=0  
     let indice3=0  
