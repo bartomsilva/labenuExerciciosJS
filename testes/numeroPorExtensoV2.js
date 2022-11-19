@@ -46,19 +46,20 @@ function nS(numero){
 
     numero = String(numero)
     const tamanho= numero.length
- 
+    
+    let indice1=""
+    let indice2=""
+    let indice3=""
 
-    const indice1=Number(numero[0])
-    const indice2=Number(numero[1])
-    const indice3=Number(numero[2])
-    const indice4=Number(numero[3])
-    
-    
+    indice1=Number(numero[0])
+    indice2=Number(numero[1])
+    indice3=Number(numero[2])
+       
     if (tamanho==1) {return Unidade(numero)}
     if (tamanho==2) {return Dezena(numero)}
     if (tamanho==3) {return Centena(numero)}
     if (tamanho==4) {return Milhar(numero)}
-    
+    if (tamanho>4) (console.log("em desenvolvimento"))
     
     ////////////////////
     // trata da UNIDADES
@@ -72,7 +73,11 @@ function nS(numero){
     // trata das DEZENAS
     ////////////////////
     // [0][1]
-    function Dezena(numero) {         
+    function Dezena(numero) {     
+
+        indice1=Number(numero[0])
+        indice2=Number(numero[1])
+         
         // 11, 12,13, 14 até 19
         if (numero[0]=="1" && numero[1]!="0"){
             return unidadeD1[Number(numero)]        
@@ -92,6 +97,9 @@ function nS(numero){
     ////////////////////
     // [0][1][2]
     function Centena(numero){  
+        indice1=Number(numero[0])
+        indice2=Number(numero[1])
+        indice3=Number(numero[2])
         // [0][1][2]  
         // 100, 200 ....900 fechadas
         if (numero[1]+numero[2]=="00") { 
@@ -132,8 +140,9 @@ function nS(numero){
     }  
 
     function Milhar(numero){
+
         // [0][1][2][3]
-        let result = Unidade(numero[0])
+        let result = Unidade(numero[0]) // o primeiro número
 
         // 1000...2000...9000 fechados
         if (numero[1]+numero[2]+numero[3]=="000") {
@@ -143,10 +152,18 @@ function nS(numero){
                 return ( result+" "+mil[1])
             }
         }
-        
-        return "em desenvolvimento"
-
-       
+        // 1100 1200....9999 
+        // [0][1][2][3]
+        result = result=="um"?"":result
+        if (numero[1]!="0"){
+            return (result +" "+mil[1]+" "+Centena(numero.slice(1))).trim()
+        }
+        //1001 - 1099
+        if (numero[2]!="0"){
+            return (result+" "+mil[1]+" e "+Dezena(numero.slice(2))).trim()
+        } else {
+            return (result +" "+mil[1]+" e "+Unidade(numero.slice(3))).trim()
+        }       
     }
 
 }
