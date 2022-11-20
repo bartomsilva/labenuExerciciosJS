@@ -11,7 +11,7 @@ const uppercase=(name)=>{
     let newName = ""
     
     // sub-função que verifica palavras que não 
-    // dever ter primeira letra maiuscula
+    // devem ter primeira letra maiuscula
     const wordOk=(word)=>{
       const blackList=['e',"da","das","de","do","dos"]
       return !(blackList.find(item => item === word))    
@@ -45,6 +45,6 @@ const uppercase=(name)=>{
   
   // testes
   console.log(uppercase("juliana moreira de bragança e bourbon"))
-  console.log(uppercase("maria josé costa e souza"))
+  console.log(uppercase("maria josé costa sá e souza"))
   console.log(uppercase("pablo ricardo das neves e silva dos anjos"))
   console.log(uppercase("bartolomeu mariano das neves e souza e silva de neto do carmo"))
