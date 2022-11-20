@@ -48,6 +48,5 @@ function ex2() {
     console.log(`o menor número é ${numeroMenor}`)
     console.log(`o número maior é ${numeroMaior}`)
 
-
-
 }
+
