@@ -1,7 +1,7 @@
 let numero=0
 while(true){
     
-    numero=prompt(`Digite um número entre ( 0 e 100 )
+    numero=prompt(`Digite um número entre ( 0 e 9999 )
                     para finalizar digite 00`)
     
     if(numero=="00") break
@@ -11,7 +11,7 @@ while(true){
 
 function nExtenso(){
     const numero=Number(document.querySelector("#numero").value)
-    if (!eNumber(numero) || numero < 0 ){
+    if (!eNumber(numero) || numero < 0  ){
         document.querySelector("#resposta").innerHTML=`o valor informado = ${numero} não é aceito!`
         return
     }
@@ -27,7 +27,7 @@ function resetResult()  {
 
 // apenas numeros inteiros de zero a 999
 function nS(numero){
-  
+    
     const unidadeD1=["zero","um","dois","três","quatro","cinco","seis","sete","oito","nove",
     "","onze","doze","treze","quatorze","quinze","dezeseis","dezesete","dezoito","dezenove"]
 
@@ -46,21 +46,14 @@ function nS(numero){
 
     numero = String(numero)
     const tamanho= numero.length
-    
-    let indice1=""
-    let indice2=""
-    let indice3=""
-
-    indice1=Number(numero[0])
-    indice2=Number(numero[1])
-    indice3=Number(numero[2])
-       
+           
     if (tamanho==1) {return Unidade(numero)}
     if (tamanho==2) {return Dezena(numero)}
     if (tamanho==3) {return Centena(numero)}
     if (tamanho==4) {return Milhar(numero)}
     if (tamanho>4) (console.log("em desenvolvimento"))
     
+
     ////////////////////
     // trata da UNIDADES
     ////////////////////
@@ -74,75 +67,62 @@ function nS(numero){
     ////////////////////
     // [0][1]
     function Dezena(numero) {     
-
-        indice1=Number(numero[0])
-        indice2=Number(numero[1])
-         
+          
         // 11, 12,13, 14 até 19
         if (numero[0]=="1" && numero[1]!="0"){
-            return unidadeD1[Number(numero)]        
+            return unidadeD1[numero]        
         }
 
         /// 10 -20 - 30 - 40 até 90 fechadas
         if (numero[1]=="0") {
-            return (dezena[Number(numero/10)])
+            return (dezena[numero.slice(0,1)])
         } 
         // 21 a 99
-           return ( dezena[indice1] + ' e '+ Unidade(indice2) )
+           return (dezena[numero.slice(0,1)] + ' e '+ Unidade(numero.slice(1)) )
     }
-
 
     ////////////////////
     // trata as CENTENAS
     ////////////////////
-    // [0][1][2]
-    function Centena(numero){  
-        indice1=Number(numero[0])
-        indice2=Number(numero[1])
-        indice3=Number(numero[2])
-        // [0][1][2]  
-        // 100, 200 ....900 fechadas
-        if (numero[1]+numero[2]=="00") { 
-            return (centena[Number(numero/100)])
-        }        
-        // 101 102 .... 109
-        if (numero[0]=="1" && numero[1]=="0") {
-            return (centena[0]+ ' e '+ Unidade(indice3))
+    // [0][1][2]   
+    function Centena(numero){
+        // 100 .... 900
+        if (numero[1]=="0" && numero[2]=="0"){
+            if (numero[0]=="1") {
+                return centena[1]
+            } else {
+                return centena[numero[0]]
+            }
         }
-        // 110, 120, 130 - fechado
-        if (numero[0]=="1" && numero[2]=="0") {
-            return (centena[0]+ ' e '+ dezena[indice2])
+        // 110...999
+        if (numero[1]!="0") {
+            if (numero[0]=="1"){
+                return centena[0]+" e "+Dezena(numero.slice(1))
+            } else {
+                return centena[numero[0]]+ " e "+Dezena(numero.slice(1))
+            }
+        } else {
+            if (numero[0]=="1"){
+                return centena[0]+" e "+Unidade(numero.slice(2))
+            } else {
+                return centena[numero[0]]+" e "+Unidade(numero.slice(2))
+            }
         }
-        // 111 a 119
-        if (numero[0]=="1" && numero[1]=="1" && numero[2]!="0") {
-            return (centena[0]+ ' e '+ unidadeD1[Number(numero[1]+numero[2])])
-        }
-        // 121..............199
-        if (numero[0]=="1" && numero[1]!="1" ) {
-            return (centena[0]+ ' e '+ dezena[indice2]+" e "+ unidadeD1[indice3])
-        }
-        // 201, 203, 909
-        if (numero[0]!="1" && numero[1]=="0" ) {
-            return (centena[indice1]+ ' e '+ unidadeD1[indice3])
-        }
-        //  210.....990
-        if (numero[0]!="1" && numero[1]!="0" && numero[2]=="0" ) {
-            return (centena[indice1]+ ' e '+ dezena[indice2])
-        }
-        // 211 212 ...219
-        if (numero[0]!="1" && numero[1]=="1" && numero[2]!="0" ) {
-            return (centena[indice1]+ ' e '+ unidadeD1[Number(numero[1]+numero[2])])
-        }
-        // 221 222 ... 999
-        if (numero[0]!="1" && numero[1]!="1" && numero[2]!="0" ) {
-            return (centena[indice1]+ ' e '+ dezena[indice2] + " e "+unidadeD1[indice3])
-        }   
-    }  
+        //101..109
+        return centena[0]+" e "+Unidade(numero.slice(2))       
 
+    }
+
+    ////////////////////
+    // trata os MILHARES
+    ////////////////////
+    // [0][1][2][3]
     function Milhar(numero){
-
-        // [0][1][2][3]
-        let result = Unidade(numero[0]) // o primeiro número
+   
+        // o primeiro número
+        let result = Unidade(numero[0]) 
+        // remove a palavra um caso venha
+        result = result.replace("um","")
 
         // 1000...2000...9000 fechados
         if (numero[1]+numero[2]+numero[3]=="000") {
@@ -153,8 +133,7 @@ function nS(numero){
             }
         }
         // 1100 1200....9999 
-        // [0][1][2][3]
-        result = result=="um"?"":result
+          
         if (numero[1]!="0"){
             return (result +" "+mil[1]+" "+Centena(numero.slice(1))).trim()
         }
@@ -165,5 +144,5 @@ function nS(numero){
             return (result +" "+mil[1]+" e "+Unidade(numero.slice(3))).trim()
         }       
     }
-
 }
+
