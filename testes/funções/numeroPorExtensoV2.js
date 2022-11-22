@@ -66,13 +66,11 @@ function nS(numero){
     // trata das DEZENAS
     ////////////////////
     // [0][1]
-    function Dezena(numero) {     
-          
+    function Dezena(numero) {             
         // 11, 12,13, 14 até 19
         if (numero[0]=="1" && numero[1]!="0"){
             return unidadeD1[numero]        
         }
-
         /// 10 -20 - 30 - 40 até 90 fechadas
         if (numero[1]=="0") {
             return (dezena[numero.slice(0,1)])
@@ -109,21 +107,18 @@ function nS(numero){
             }
         }
         //101..109
-        return centena[0]+" e "+Unidade(numero.slice(2))       
-
+        return centena[0]+" e "+Unidade(numero.slice(2)) 
     }
 
     ////////////////////
-    // trata os MILHARES
+    // trata os MILHARES com 4 dígitos
     ////////////////////
     // [0][1][2][3]
-    function Milhar(numero){
-   
+    function Milhar(numero){   
         // o primeiro número
         let result = Unidade(numero[0]) 
         // remove a palavra um caso venha
         result = result.replace("um","")
-
         // 1000...2000...9000 fechados
         if (numero[1]+numero[2]+numero[3]=="000") {
             if (numero[0]=="1") {
@@ -132,8 +127,7 @@ function nS(numero){
                 return ( result+" "+mil[1])
             }
         }
-        // 1100 1200....9999 
-          
+        // 1100 1200....9999           
         if (numero[1]!="0"){
             return (result +" "+mil[1]+" "+Centena(numero.slice(1))).trim()
         }

@@ -22,18 +22,23 @@ while(true) {
    }
 
    numTent = 0 // reset
-   // rest = gerar um número aleatório ente 1 e 100
-   numSecreto = Math.floor(Math.random() * 10 + 1 ) 
+   // reset = gerar um número aleatório ente 1 e 100
+   numSecreto = Math.floor(Math.random() * 100 + 1 ) 
    //                  >>> aqui alterar de 10 para 100        
    console.log("Vamos jogar então!")
+   // deixo em loop infinito, a saída vou tratar nas condições
    while(true) {
       
       numChut=prompt("Qual é seu palpite?")
-      if (typeof numChut =="object") {continue}  // cancelar             
+      
+      // se clicou cancelar, volto para o início usando o continue             
+      if (typeof numChut =="object") {continue}  
       
       numChut = Number(numChut)
-      // j = Number(numChut) = NaN não é um número
-      // "" = Number(numChut) = 0
+      // se digitar srings tipo um j = Number(numChut) = retorna NaN não é um número
+      // se não digitar nada "" = Number(numChut) = retorna 0
+      
+      // se o número digitado não for de 1 em diante volto para o começo usando o continue
       if (!numChut>=1) {continue}
 
       console.log(`seu palpite foi: ${numChut}`)
@@ -43,6 +48,7 @@ while(true) {
          console.log(`infelizmente você errou, é ${numChut<numSecreto?"maior!":"menor!"} `)
       } else {
          console.log(`Meus parabéns, ACERTOU!!!`)
+         // quando acerta interrompo o loop while com o break
          break
       }
    }
