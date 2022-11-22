@@ -1,5 +1,5 @@
 let numero=0
-while(true){
+while(false){
     
     numero=prompt(`Digite um número entre ( 0 e 9999 )
                     para finalizar digite 00`)
@@ -47,11 +47,11 @@ function nS(numero){
     numero = String(numero)
     const tamanho= numero.length
            
-    if (tamanho==1) {return Unidade(numero)}
-    if (tamanho==2) {return Dezena(numero)}
-    if (tamanho==3) {return Centena(numero)}
-    if (tamanho==4) {return Milhar(numero)}
-    if (tamanho>4) (console.log("em desenvolvimento"))
+    if (tamanho==1) return Unidade(numero)
+    if (tamanho==2) return Dezena(numero)
+    if (tamanho==3) return Centena(numero)
+    if (tamanho==4) return Milhar(numero)
+    if (tamanho>4)  return " acima de 9.999 está em desenvolvimento"
     
 
     ////////////////////
