@@ -21,8 +21,11 @@ const doubledNumbers1 = numbers.map( function(elem){
 //console.log(doubledNumbers1)
 
 // arrow function  // mas moderna 
-const doubledNumbers2 = numbers.map( num => num * 2 )
+const doubledNumbers2 = numbers.map( (num,i,a) => { 
+   a[i]=num * 2  // modificando o array original
+   return a[i]} ) // retornando valor 
 //console.log(doubledNumbers2)
+//console.log(numbers)
 
 
 /* Temperaturas fahrenheit para celsius 
@@ -70,6 +73,48 @@ const celsius4 = fahrenheit.map(fahrenheitToCelsius)
    const novoArray=meuArray.filter( (elem,index,arr) => arr.indexOf(elem) === index)
    //console.log(novoArray)
 
+   // tudo que for par e sem repetições
+   const meuArrayPar = meuArray.filter((e,i,a) => e % 2===0 && a.indexOf(e) === i)
+  //console.log(meuArrayPar)
+
+/////////////////
+/////////////////
+var arr = [
+   { id: 15 },
+   { id: -1 },
+   { id: 0 },
+   { id: 3 },
+   { id: 12.2 },
+   { },
+   { id: null },
+   { id: NaN },
+   { id: 'undefined' }
+ ];
+ 
+ var invalidEntries = 0;
+ 
+ function filterByID(obj) {
+   if ('id' in obj && typeof(obj.id) === 'number' && !isNaN(obj.id)) {
+     return true;
+   } else {
+     invalidEntries++;
+     return false;
+   }
+ }
+ 
+ var arrByID = arr.filter(filterByID);
+ 
+ //console.log('Filtered Array\n', arrByID);
+ // [{ id: 15 }, { id: -1 }, { id: 0 }, { id: 3 }, { id: 12.2 }]
+ 
+ //console.log('Number of Invalid Entries = ', invalidEntries);
+ // Number of Invalid Entries = 4
+ 
+
+/////////////////
+/////////////////
+
+
 
    /* ==========================================================================
    reduce()  // ??? rudindo a um total ???
@@ -89,7 +134,19 @@ const celsius4 = fahrenheit.map(fahrenheitToCelsius)
    //console.log(total1)
    //console.log(total2)
 
+   // map/reduce; melhor solução, funciona para vetores vazios e tambem para vetores grandes
+   var maxCallback2 = ( max, cur ) => Math.max( max, cur )
+   var total = ( acc, cur ) => cur >0?(acc+cur):acc 
+   
+   const xx=[ { x: 22 }, { x: 42 } ].map( el => el.x ).reduce( maxCallback2)
+   //console.log(xx)
 
+   const zz=[ { x: 22 }, { x: 42 }, { },{x:"b"} ].map( el => el.x ).reduce(total,0)
+   console.log("zz",zz)
+
+
+   const yy=[0, 1, 2, 3, 4].reduce( (accum, curr) => accum + curr )
+   //console.log("yy,",yy)
    /* ==========================================================================
    every()  // verificar se todos elementos atendem uma condição? retora booleano
    ========================================================================== */
@@ -111,7 +168,7 @@ const celsius4 = fahrenheit.map(fahrenheitToCelsius)
       { id: 05, name: "Gui", age: 3, staus: 1}      
    ]
 
-   console.log(`todos da lista tem passaporte? ${family.every(e => e.staus ===1)}`)
+   //console.log(`todos da lista tem passaporte? ${family.every(e => e.staus ===1)}`)
 
 
 
