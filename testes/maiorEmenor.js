@@ -1,6 +1,6 @@
 
 
-let array = [9 , 18 , 7, 5 , 1, 120, 400, 101, 67, 233, 13]
+let array = [9 , 18 , 7]
 
 /*
 
@@ -24,12 +24,13 @@ for ( let x = 0 ; x < array.length; x++ ){
     if ( vMaior < array[x] ) {vMaior = array[x]}
 }
 
-console.log("método manual")
-console.log("valor menor",vMenor)
-console.log("valor maior",vMaior)
+//console.log("método manual")
+//console.log("valor menor",vMenor)
+//console.log("valor maior",vMaior)
 
 console.log("metodo de ordenação")
-array.sort((a, b) => a - b)
+array.sort((a, b) => a - b )
+console.log(array)
 console.log("valor menor",array[0])
 console.log("valor maior",array[array.length-1])
 
