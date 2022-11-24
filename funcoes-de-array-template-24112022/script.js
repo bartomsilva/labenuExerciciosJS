@@ -1,47 +1,59 @@
 // by bart - 11/2022
 const pokemons = [
-  { nome: 'Bulbasaur', tipo: 'grama', vida: 40 },
-  { nome: 'Bellsprout', tipo: 'grama', vida: 20 },
-  { nome: 'Charmander', tipo: 'fogo', vida: 35 },
-  { nome: 'Vulpix', tipo: 'fogo', vida: 25 },
-  { nome: 'Squirtle', tipo: 'água', vida: 45 },
-  { nome: 'Psyduck', tipo: 'água', vida: 25 },
+  { name: 'Bulbasaur', type: 'grama', life: 40 },
+  { name: 'Bellsprout', type: 'grama', life: 20 },
+  { name: 'Charmander', type: 'fogo', life: 35 },
+  { name: 'Vulpix', type: 'fogo', life: 25 },
+  { name: 'Squirtle', type: 'água', life: 45 },
+  { name: 'Psyduck', type: 'água', life: 25 },
 ]
 
 // a)
 // função que altera o valor da vida para 100%
 // função nomeada
-function lifeFull(obj) {
-  obj.vida=100  
+function lifeFull(obj){
+  obj.life=100  
   return obj
 }
 
 //b) MAP
-// alterando os valores da vida para vida cheia
+// alterando os valores da vida para vida cheia (DUAS FORMAS)
+
+// utilizando uma função nomeada como callback
 const pokemonsVidaCheia = pokemons.map(lifeFull)
+
+// utilizando uma função arrow function como callback
+const pokemonsVidaCheia2= pokemons.map(obj => {return{...obj,life:100}})
 printPokemons("Pokemons de Vida Cheia",pokemonsVidaCheia)
+printPokemons("Pokemons de Vida Cheia - 2",pokemonsVidaCheia2)
 
 //c) FILTER
 // função não nomeada
 const pokeFire=function(obj){
-  return obj.tipo==="fogo"
+  return obj.type==="fogo"
 }
+// selecionando pokemons de fogo (DUAS FORMAS)
 
-// selecionando pokemons de fogo
+// usando a função não nomeada como callback
 const pokemonsDeFogo = pokemons.filter(pokeFire)
+
+// utilizando arrow function como callback
+const pokemonsDeFogo2 = pokemons.filter(obj => obj.type==="fogo")
 printPokemons("Pokemons de Fogo",pokemonsDeFogo)
+printPokemons("Pokemons de Fogo - 2",pokemonsDeFogo2)
+
 
 ////////////////////////////
 ///// impressão dos Pokemons
 ////////////////////////////
+
+// recebe o texto do cabeçalho e o obj 
 function printPokemons(text,obj){
   console.log("\n")
   console.log("-".repeat(text.length))
   console.log(`${text}`)  
   console.log("-".repeat(text.length))
   obj.map(e=> {
-    console.log(`Nome: ${e.nome} - Tipo: ${e.tipo} - Vida ${e.vida}%`)    
+    console.log(`Nome: ${e.name} - Tipo: ${e.type} - Vida ${e.life}%`)    
   })
 }
-
-

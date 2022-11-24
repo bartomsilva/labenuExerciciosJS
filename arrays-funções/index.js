@@ -25,8 +25,8 @@ const numPares=(array) => {
 // como parametros, executa a função de callback, 
 // armazena os valores retornados pela função de callback 
 // em uma variável e faz a impressão no console
-function execFunc(array, fC){
-    const result=fC(array) 
+function execFunc(array, fcallBack){
+    const result=fcallBack(array) 
     console.log(`${result}`)
 }
 
