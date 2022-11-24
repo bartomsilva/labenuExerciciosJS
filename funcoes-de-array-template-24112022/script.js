@@ -1,3 +1,4 @@
+// by bart - 11/2022
 const pokemons = [
   { nome: 'Bulbasaur', tipo: 'grama', vida: 40 },
   { nome: 'Bellsprout', tipo: 'grama', vida: 20 },
@@ -35,7 +36,9 @@ printPokemons("Pokemons de Fogo",pokemonsDeFogo)
 ////////////////////////////
 function printPokemons(text,obj){
   console.log("\n")
+  console.log("-".repeat(text.length))
   console.log(`${text}`)  
+  console.log("-".repeat(text.length))
   obj.map(e=> {
     console.log(`Nome: ${e.nome} - Tipo: ${e.tipo} - Vida ${e.vida}%`)    
   })
