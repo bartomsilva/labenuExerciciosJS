@@ -24,12 +24,12 @@ function retornaArrayInvertido(array) {
 function retornaArrayOrdenado(array) {
     // sem usar o sort()
     let valAux=0
-    for(let i1 in array){
-        for(let i2 in array){
-            if(array[i1] > array[i2]){
-                valAux=array[i2]
-                array[i2]=array[i1]
-                array[i1]=valAux
+    for(let a in array){
+        for(let b in array){
+            if(array[a] < array[b]){
+                valAux=array[b]
+                array[b]=array[a]
+                array[a]=valAux
             }
         }        
     }
@@ -76,27 +76,52 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+    let result=[]
+    cont=0 
+    while(result.length<n) {
+        if (cont%2===0) result.push(cont)
+        cont++       
+    }
+    return result      
 }
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-
+    let result=""
+    if (ladoA == ladoB && ladoA == ladoC) {
+        result="Equilátero"
+    } else if (ladoA != ladoB && ladoA != ladoC && ladoB != ladoC) {
+        result="Escaleno"
+    } else {
+        result = "Isósceles"
+    }
+    return result
 }
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+    const newArray=[]
+    array = array.sort( (a,b) => a-b )
+    newArray.push(array[array.length-2])
+    newArray.push(array[1])
+    return newArray  
 }
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
+
+   let atores=filme.atores.toString().replaceAll(",",", ")
+   let result="Venha assistir ao filme "+filme.nome+", de "+filme.ano+", dirigido por "+
+   filme.diretor+" e estrelado por "+atores+"."
    
+   return result
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+    novaPessoa={...pessoa}
+    novaPessoa.nome="ANÔNIMO" 
+    return(novaPessoa)  
 }
 
 // EXERCÍCIO 13A
