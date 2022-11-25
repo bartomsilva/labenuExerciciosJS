@@ -37,3 +37,20 @@ testCallBack(objeto, returnUpperCaseText)
 
 console.log("\n---- Texto Corrido ----")
 testCallBack(objeto, returnTextOneLine)
+
+
+
+/* const objCaixaAlta = (obj) => {
+    const novoObj = {};
+  
+    for (let [key, value] of Object.entries(obj)) {
+      novoObj[key] = value.toUpperCase();
+    }
+  
+    return novoObj;
+  };
+
+  console.log("----",objCaixaAlta(objeto)) */
+
+
+  
