@@ -2,10 +2,10 @@
 // função para converter data para padrão BR 
 // a função espera um object data válido
 const databr=(date)=>{
-    const dia =  date.getDate()
-    const mes = date.getMonth()+1
-    const ano = date.getFullYear()
-    return dia+'/'+mes+'/'+ano    // retorna uma string dd/mm/aaaa
+    const day =  date.getDate()
+    const month = date.getMonth()+1
+    const year = date.getFullYear()
+    return day+'/'+month+'/'+year    // retorna uma string dd/mm/aaaa
 }
 
 // função que retorna o dia da semana por extenso 
@@ -29,7 +29,7 @@ const mesExtenso=(mes)=>{
 }
 // data é formada por ano / mes / dia
 
-/*
+
 const niver = new Date();
 console.log("date criada.",niver)
 console.log('-------------------------')
@@ -41,7 +41,7 @@ console.log('-------------------------')
 console.log("date Br..................",databr(niver))
 console.log("dia da Semana p/extenso..",diaExtensso(niver.getDay()+1))
 console.log("mês p/extensso...........",mesExtensso(niver.getMonth()+1))
-*/
+
 
 
 
