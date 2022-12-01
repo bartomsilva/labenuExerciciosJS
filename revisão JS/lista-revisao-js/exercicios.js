@@ -119,10 +119,11 @@ function retornaChamadaDeFilme(filme) {
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-    novaPessoa = { ...pessoa }
-    novaPessoa.nome = "ANÔNIMO"
+    novaPessoa = { ...pessoa, nome: "ANÔNIMO" }
     return (novaPessoa)
 }
+
+console.log( retornaPessoaAnonimizada({nome: "hise",idade: 33}))
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
@@ -136,16 +137,37 @@ function retornaPessoasNaoAutorizadas(pessoas) {
         (e.idade > 14 && e.idade < 60)))
 }
 
+
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-    contas.map(e => {
-        for (const val of e.compras)
+/*     contas.map( e => {
+        for (const val of e.compras){
             e.saldoTotal -= val
-        e.compras = []
-        return e
+        }
+        e.compras = []     
     })
-    return contas
-}
+    return contas  */
+   /*  for(const obj of contas){
+        for(const valor of obj.compras){
+            obj.saldoTotal -= valor
+        }
+        obj.compras=[]
+    }
+    return contas  */ 
+/*      contas.forEach(obj => {
+        for (const val of obj.compras){
+            obj.saldoTotal -= val
+        }
+        obj.compras = []     
+    })
+    return contas  */      
+    contas.forEach(obj => {
+        obj.saldoTotal -= obj.compras.reduce( (acc, vAtual)  => acc +vAtual , 0 )
+        obj.compras = []     
+    })
+    return contas 
+} 
+
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
@@ -161,10 +183,12 @@ function retornaArrayOrdenadoPorData(consultas) {
         a = a.dataDaConsulta.substring(6, 10) + a.dataDaConsulta.substring(3, 5) + a.dataDaConsulta.substring(0, 2)
         b = b.dataDaConsulta.substring(6, 10) + b.dataDaConsulta.substring(3, 5) + b.dataDaConsulta.substring(0, 2)
         if (a > b) {
-            return 1
+            return 1 // a é maior 
         } else {
-            return -1
+            return -1  // a é menor
         }
     })
     return consulta
 }
+
+

@@ -8,6 +8,7 @@ const databr=(date)=>{
     return day+'/'+month+'/'+year    // retorna uma string dd/mm/aaaa
 }
 
+
 // função que retorna o dia da semana por extenso 
 // a função recebe como parametro o número do dia da semana de
 // forma normal: ex: domingo = 1, segunda = 2 e ........

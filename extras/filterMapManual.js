@@ -1,4 +1,4 @@
-
+/* 
 const numbers = [2, 3, 4, 5, 6, 8, 9, 0]
 
 /* filter e Map manual - By Bart
@@ -32,6 +32,8 @@ function filterMap(arr, fCb) {
 console.log("---- só os números pares-------------------")
 console.log("Filter Js.....:",numbers.filter((a) => a % 2 == 0))
 console.log("Filter Manual.:",filterMap(numbers, (a) => a % 2 == 0))
+
+
 console.log("...........................................\n")
 
 console.log("-- os números elevados a 2 ----------------")
@@ -52,6 +54,12 @@ const colors = [
     console.log("...multiplicar ord por 2..........")
     result = filterMap( colors, cor => cor.ord*2)
     console.log("map manual com ojetos", result)
+
+
+
+
+
+
 
 
 
