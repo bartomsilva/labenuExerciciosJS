@@ -5,7 +5,6 @@ let pcLetter = []
 let usPoints = 0
 let pcPoints = 0
 // iniciando o Jogo
-function iniGame() {
    while (true) {
       const resp = confirm("Olá, esse é BLACKJACK do Bart" +
          "\nDeseja iniciar uma nova rodada?")
@@ -66,5 +65,5 @@ function iniGame() {
          "Computador Cartas -" + listLetters(pcLetter) + " - " + pcPoints + "\n"
       return text
    }
-}
+
 
