@@ -119,6 +119,7 @@ function showLetter(userType, arr) {
         let numLetter = null
         let naipeLetter = null
         let text = arr[index].texto
+        console.log(text,text.length)
         if (text.length == 3) {
             numLetter = text[0]
             naipeLetter = text[1]
