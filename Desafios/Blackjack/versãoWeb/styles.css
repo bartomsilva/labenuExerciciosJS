@@ -1,6 +1,3 @@
-.flex {
-    display: flex;
-}
 p{
     font-size: 0.8rem;
     padding: 0;
@@ -40,6 +37,7 @@ p{
 }
 
 .carta {
+    display: flex;
     height: 54px;
     border: 1px solid rgb(255, 16, 55);
     margin: 3px;
@@ -47,12 +45,15 @@ p{
 }
 .carta-top {
     text-align: left;
+    align-self: flex-start;
 }
 .carta-center {
-    text-align: center;
+    text-align: center; 
+    align-self: center;
 }
 .carta-botton {
     text-align: right;
+    align-self: flex-end;
 }
 
 .game {
@@ -63,6 +64,11 @@ p{
     width: 100%;
     height: 40px;
     background-color: black;
+}
+
+
+.flex {
+    display: flex;
 }
 
 .none {
