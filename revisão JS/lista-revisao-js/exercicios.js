@@ -109,11 +109,9 @@ function retornaSegundoMaiorESegundoMenor(array) {
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-
     let atores = filme.atores.toString().replaceAll(",", ", ")
     let result = "Venha assistir ao filme " + filme.nome + ", de " + filme.ano + ", dirigido por " +
         filme.diretor + " e estrelado por " + atores + "."
-
     return result
 }
 
@@ -123,7 +121,6 @@ function retornaPessoaAnonimizada(pessoa) {
     return (novaPessoa)
 }
 
-console.log( retornaPessoaAnonimizada({nome: "hise",idade: 33}))
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
@@ -140,27 +137,6 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-/*     contas.map( e => {
-        for (const val of e.compras){
-            e.saldoTotal -= val
-        }
-        e.compras = []     
-    })
-    return contas  */
-   /*  for(const obj of contas){
-        for(const valor of obj.compras){
-            obj.saldoTotal -= valor
-        }
-        obj.compras=[]
-    }
-    return contas  */ 
-/*      contas.forEach(obj => {
-        for (const val of obj.compras){
-            obj.saldoTotal -= val
-        }
-        obj.compras = []     
-    })
-    return contas  */      
     contas.forEach(obj => {
         obj.saldoTotal -= obj.compras.reduce( (acc, vAtual)  => acc +vAtual , 0 )
         obj.compras = []     
