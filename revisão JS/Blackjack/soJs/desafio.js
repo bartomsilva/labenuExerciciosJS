@@ -53,12 +53,14 @@ let pcPoints = 0
          pcPoints > 21 ? alert(text + "\n" + "o Usuário Ganhou!") : alert(text + "\n" + "o Computador Ganhou!")
       }
    }
+   
    /// retorna lista de CARTAS COMPRADAS
    function listLetters(arr) {
       let result = ""
       arr.forEach(obj => result += obj.texto + " ")
       return result.trim()
    }
+
    /// RESUMO DAS CARTAS E PONTOS
    function resum() {
       const text = "Usuário Cartas - " + listLetters(usLetter) + " - " + usPoints + "\n" +
