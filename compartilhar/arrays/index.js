@@ -72,33 +72,41 @@ const clientes =
 // criando um atalho para o console.log
 const print = console.log.bind() 
 
+function numeroAleatorio() {
+     return Math.floor(Math.random() * 5)+1
+}
 
 // find - buscar / procurar 
 // filter - filtrar / selecionar
 // map - mapeamento / percorrer 
-//print(atendentes.find( ojb => ojb.codigo=="1"))
 
-const inadimplentes = clientes.filter( obj => !obj.pago)
+codAt=1
+//const retorno1 = atendentes.find( obj => obj.codigo === codAt)
+const inadimplentes = clientes.filter( obj => !obj.pago )
 
+inadimplentes.map( cliente => {
+    const numAt=numeroAleatorio()
+    const nomeAtendente = atendentes.find( at => at.codigo ===numAt ).nome
+    cliente.atendente = nomeAtendente
+    return cliente
+})
 //print(inadimplentes)
 
-inadimplentes.map( obj => {
-    const codAtendente = numeroAleatorio()
-    const atendente = atendentes.find( obj => obj.codigo==codAtendente)
-    obj.atendente=atendente.nome
-    return obj
-})
-print(inadimplentes)
+// includes()  bart silva -- t s
+// startsWith() silva
+
+let nomeP="umar"
+
+const fichaCli=clientes.filter( e => e.nome.toLowerCase().includes(nomeP))
+//print(fichaCli)
 
 
+const
 
-
-
-
-
-
-
-
-function numeroAleatorio() {
-     return Math.floor(Math.random() * 5)+1
+const buscarEstudantes = (nomeEstudante) => {
+    const abrevNome = clientes.filter((pera) => {
+        return pera.nome.includes(nomeEstudante)
+    })
+    return abrevNome
 }
+console.log(buscarEstudantes("Z"))

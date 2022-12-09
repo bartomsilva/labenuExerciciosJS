@@ -143,7 +143,8 @@ const dataBr = (date) => {
     const month = date.getMonth() + 1
     const year = date.getFullYear()
     // retorna uma string dd/mm/aaaa
-    return day + '/' + month + '/' + year
+    //return day + '/' + month + '/' + year
+    return date.toLocaleDateString("pt-br")
 }
 
 const primeiraDose = (name, vaccine) => {
@@ -163,9 +164,12 @@ const primeiraDose = (name, vaccine) => {
     const timeVacine = result.time
     const dateNextDose = new Date()
     dateNextDose.setDate(dateNextDose.getDate() + timeVacine)
+    
+
     return `Olá ${name}! A próxima dose da ${vaccine} é daqui a ${timeVacine} dias. Compareça no posto na data ${dataBr(dateNextDose)}.`
 
 }
+
 console.log(primeiraDose("bart", "covidvac"))
 console.log(primeiraDose("bart", "astrazenica"))
 console.log(primeiraDose("bart", "coronavac"))
